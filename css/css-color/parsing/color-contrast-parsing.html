@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<link rel=help href="https://www.w3.org/TR/css-color-5/#colorcontrast">
+<link rel=author href="mailto:jarhar@chromium.org">
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+
+<script>
+function colorComputedStyle(value) {
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.style.setProperty('background-color', value);
+  const returnValue = getComputedStyle(div).getPropertyValue('background-color');
+  div.remove();
+}
+
+test(() => {
+  assert_equals('color-contrast(red vs red, red)', 'red', 'Correct syntax with keywords.');
+  //assert_equals('color-contrast(red vs red, red)', 'red', 'Correct syntax with lab().');
+}, 'Verifies that color-contrast() parses correctly.');
+</script>
